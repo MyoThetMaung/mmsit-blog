@@ -9,16 +9,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    <!-- Vite -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
@@ -52,10 +47,12 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @endguest
+                        @auth
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }} <br>
+                                    {{ Auth::user()->role }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -70,14 +67,28 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endauth
                     </ul>
                 </div>
             </div>
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    @auth
+                        <div class="col-md-3">
+                            @include('layouts.sidebar')
+                        </div>
+                        <div class="col-md-9">
+                            @yield('content')
+                        </div>
+                        </div>
+                    @endauth
+            </div>
+            @guest
+                @yield('content')
+            @endguest
         </main>
     </div>
 </body>

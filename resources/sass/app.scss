@@ -1,8 +1,15 @@
+// Bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//Bootstrap icon
+@import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+//Sweet alert
+@import '../../node_modules/sweetalert2/src/sweetalert2.scss';
+

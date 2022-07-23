@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <h2 class="text-danger">Hello Morning</h2>
@@ -36,6 +36,6 @@
 
     {{--  button sweetalert  --}}
     <button id="btn" class="btn btn-success">Click me </button>
-    <i class="bi bi-123"></i>
+    <i class="bi bi-123" class=""></i>
 </body>
 </html>
